@@ -14,7 +14,7 @@ function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
 	for (i = 0; i < numberChannels; i++) {
-		$('div div:nth-child(' + (i + 1) + ')').height(fbc_array[i] * $(window).height() / 400);
+		$('div div:nth-child(' + (i + 1) + ')').height(Math.floor(fbc_array[i] * $(window).height() / 400));
 		$('div div:nth-child(' + (i + 1) + ')').css('opacity', (fbc_array[i] / 255));
 	}
 }
