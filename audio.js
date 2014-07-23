@@ -19,7 +19,7 @@ function animate() {
 		if (fbc_array[i] > maximumFrequency) {
 			maximumFrequency = fbc_array[i];
 		}
-		$('div div:nth-child(' + (i + 1) + ')').height(fbc_array[i]);
+		$('div div:nth-child(' + (i + 1) + ')').height(fbc_array[i] * $(window).height() / 400);
 		$('div div:nth-child(' + (i + 1) + ')').css('opacity', (fbc_array[i] / maximumFrequency));
 	}
 }
