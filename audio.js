@@ -18,7 +18,7 @@ function animate() {
 			maximumFrequency = fbc_array[i];
 		}
 		$('div div:nth-child(' + (i + 1) + ')').height(fbc_array[i]);
-		$('div div:nth-child(' + (i + 1) + ')').css('opacity', (i / maximumFrequency));
+		$('div div:nth-child(' + (i + 1) + ')').css('opacity', (fbc_array[i] / maximumFrequency));
 	}
 }
 
