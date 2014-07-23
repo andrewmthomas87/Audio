@@ -19,6 +19,7 @@ function animate() {
 function resize() {
 	for (i = 0; i < numberChannels; i++) {
 		$('div div:nth-child(' + (i + 1) + ')').css('left', i * $(window).width() / numberChannels);
+		$('div div:nth-child(' + (i + 1) + ')').css('background-color', 'rgb(' + (255 - i) + ', ' + (255 - i) + ', ' + (255 - i) + ')');
 	}
 	$('div div').width($(window).width() / numberChannels);
 }
