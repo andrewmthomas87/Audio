@@ -1,5 +1,5 @@
 
-var numberChannels = 100;
+var numberChannels = 50;
 
 var audio, context, analyser, source;
 audio = new Audio();
