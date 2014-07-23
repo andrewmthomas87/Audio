@@ -16,4 +16,6 @@ div {
 	background-color: #3498db;
 	-webkit-transition: height 0.0666s linear;
 	        transition: height 0.0666s linear;
+	-webkit-transition: color 1s linear;
+	        transition: color 1s linear;
 }
