@@ -1,8 +1,6 @@
 
 var numberChannels = 50;
 
-var maximumFrequency = 0;
-
 var colors = ['#1abc9c', '#16a085', '#2ecc71', '#27ae60', '#3498db', '#2980b9', '#9b59b6', '#8e44ad', '#f1c40f', '#f39c12', '#e67e22', '#d35400', '#e74c3c', '#c0392b', '#ecf0f1'];
 
 var audio, context, analyser, source;
@@ -16,11 +14,8 @@ function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
 	for (i = 0; i < numberChannels; i++) {
-		if (fbc_array[i] > maximumFrequency) {
-			maximumFrequency = fbc_array[i];
-		}
 		$('div div:nth-child(' + (i + 1) + ')').height(fbc_array[i] * $(window).height() / 400);
-		$('div div:nth-child(' + (i + 1) + ')').css('opacity', (fbc_array[i] / maximumFrequency));
+		$('div div:nth-child(' + (i + 1) + ')').css('opacity', (fbc_array[i] / 255));
 	}
 }
 
