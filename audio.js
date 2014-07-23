@@ -1,6 +1,8 @@
 
 var numberChannels = 50;
 
+var maximumFrequency = 0;
+
 var audio, context, analyser, source;
 audio = new Audio();
 audio.src = 'Why-Am-I-The-One.m4a';
@@ -12,14 +14,17 @@ function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
 	for (i = 0; i < numberChannels; i++) {
+		if (fbc_array[i] > maximumFrequency) {
+			maximumFrequency = fbc_array[i];
+		}
 		$('div div:nth-child(' + (i + 1) + ')').height(fbc_array[i]);
+		$('div div:nth-child(' + (i + 1) + ')').css('opacity', (i / maximumFrequency));
 	}
 }
 
 function resize() {
 	for (i = 0; i < numberChannels; i++) {
 		$('div div:nth-child(' + (i + 1) + ')').css('left', i * $(window).width() / numberChannels);
-		$('div div:nth-child(' + (i + 1) + ')').css('background-color', 'rgb(' + (255 - i) + ', ' + (255 - i) + ', ' + (255 - i) + ')');
 	}
 	$('div div').width($(window).width() / numberChannels);
 }

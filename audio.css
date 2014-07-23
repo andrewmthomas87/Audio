@@ -13,6 +13,7 @@ div {
 	position: fixed;
 	bottom: 0;
 	height: 0;
+	background-color: #fff;
 	-webkit-transition: height 0.0666s linear;
 	        transition: height 0.0666s linear;
 }
