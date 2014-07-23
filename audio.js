@@ -12,20 +12,20 @@ function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
 	for (i = 0; i < numberChannels; i++) {
-		$('body div:nth-child(' + (i + 1) + ')').height(fbc_array[i]);
+		$('div div:nth-child(' + (i + 1) + ')').height(fbc_array[i]);
 	}
 }
 
 function resize() {
 	for (i = 0; i < numberChannels; i++) {
-		$('body div:nth-child(' + (i + 1) + ')').css('left', (i - 1) * $(window).width() / numberChannels);
+		$('div div:nth-child(' + (i + 1) + ')').css('left', i * $(window).width() / numberChannels);
 	}
-	$('div').width($(window).width() / numberChannels);
+	$('div div').width($(window).width() / numberChannels);
 }
 
 $(document).ready(function() {
 	for (i = 0; i < numberChannels; i++) {
-		$('body').append('<div></div>');
+		$('body>div').append('<div></div>');
 	}
 	resize();
 	document.body.appendChild(audio);
