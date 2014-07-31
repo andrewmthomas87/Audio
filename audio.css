@@ -19,7 +19,7 @@ span#drop {
 	width: 50%;
 	height: 1em;
 	color: #333;
-	padding: calc(25% - 2.5em) 0;
+	padding: calc(25% - 0.5em) 0;
 	margin: 0;
 	background-color: #eee;
 	border: 10px solid #fff;

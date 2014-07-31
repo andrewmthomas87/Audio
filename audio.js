@@ -61,6 +61,9 @@ $(document).ready(function() {
 			analyser.connect(context.destination);
 			setInterval(animate, 15);
 			setInterval(changeColor, 1000);
+			$('span#drop').hide('fast', function() {
+				$(this).remove();
+			});
 		};
 		reader.readAsDataURL(file);
 	});
