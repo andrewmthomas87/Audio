@@ -34,22 +34,22 @@ $(document).ready(function() {
 		$('body>div').append('<div></div>');
 	}
 	resize();
-	$('span#drop').on('dragover', function(event) {
-		event.originalEvent.stopPropogation();
-		event.originalEvent.preventDefault();
-		event.originalEvent.dataTransfer.dropEffect = 'copy';
-	});
-	$('span#drop').on('drop', function(event) {
-		event.originalEvent.stopPropogation();
-		event.originalEvent.preventDefault();
-		var file = event.originalEvent.dataTransfer.files[0];
+	document.getElementById('drop').addEventListener('dragover', function(event) {
+		event.stopPropogation();
+		event.preventDefault();
+		event.dataTransfer.dropEffect = 'copy';
+	}, false);
+	document.getElementById('drop').addEventListener('drop', function(event) {
+		event.stopPropogation();
+		event.preventDefault();
+		var file = event.dataTransfer.files[0];
 		if (!file.type.match('audio.*')) {
 			return false;
 		}
 		var reader = FileReader();
 		reader.onload = (function(file) {
 			return function(event) {
-				audio.src = event.originalEvent.target.result;
+				audio.src = event.target.result;
 				document.body.appendChild(audio);
 				context = new webkitAudioContext();
 				analyser = context.createAnalyser();
@@ -60,5 +60,5 @@ $(document).ready(function() {
 				setInterval(changeColor, 1000);
 			};
 		})(file);
-	});
+	}, false);
 });
