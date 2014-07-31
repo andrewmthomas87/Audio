@@ -50,6 +50,7 @@ $(document).ready(function() {
 		}
 		var reader = new FileReader();
 		reader.onload = (function(file) {
+			console.log('File read');
 			return function(event) {
 				audio.src = event.target.result;
 				document.body.appendChild(audio);
