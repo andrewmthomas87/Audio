@@ -2,7 +2,7 @@
 @font-face {
 	font-family: 'Tesla';
 	src: url('Tesla.ttf');
-	font-weight: 700;
+	font-weight: 900;
 }
 
 html, body {
@@ -30,7 +30,7 @@ span#drop {
 	margin: 0;
 	font-family: 'Tesla', sans-serif;
 	font-size: 8em;
-	font-weight: 700;
+	font-weight: 900;
 	text-align: center;
 	-webkit-transition: color 1s linear;
 	        transition: color 1s linear;
