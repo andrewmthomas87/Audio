@@ -35,23 +35,21 @@ $(document).ready(function() {
 	}
 	resize();
 	$('span#drop').on('dragover', function(event) {
-		console.log('Drag Over');
-		event.stopPropogation();
-		event.preventDefault();
-		event.dataTransfer.dropEffect = 'copy';
+		event.originalEvent.stopPropogation();
+		event.originalEvent.preventDefault();
+		event.originalEvent.dataTransfer.dropEffect = 'copy';
 	});
 	$('span#drop').on('drop', function(event) {
-		console.log('Drop');
-		event.stopPropogation();
-		event.preventDefault();
-		var file = event.dataTransfer.files[0];
+		event.originalEvent.stopPropogation();
+		event.originalEvent.preventDefault();
+		var file = event.originalEvent.dataTransfer.files[0];
 		if (!file.type.match('audio.*')) {
 			return false;
 		}
 		var reader = FileReader();
 		reader.onload = (function(file) {
 			return function(event) {
-				audio.src = event.target.result;
+				audio.src = event.originalEvent.target.result;
 				document.body.appendChild(audio);
 				context = new webkitAudioContext();
 				analyser = context.createAnalyser();
