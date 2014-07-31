@@ -35,12 +35,14 @@ $(document).ready(function() {
 	}
 	resize();
 	$('span#drop').on('dragover', function(jQueryEvent) {
+		console.log('Drag Over');
 		var event = jQueryEvent.originalEvent;
 		event.stopPropogation();
 		event.preventDefault();
 		event.dataTransfer.dropEffect = 'copy';
 	});
 	$('span#drop').on('drop', function(jQueryEvent) {
+		console.log('Drop');
 		var event = jQueryEvent.originalEvent;
 		event.stopPropogation();
 		event.preventDefault();
