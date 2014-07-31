@@ -50,19 +50,17 @@ $(document).ready(function() {
 		}
 		var reader = new FileReader();
 		console.log('Reading file');
-		reader.onload = (function(audioFile) {
-			return function(e) {
-				console.log('Read file');
-				audio.src = e.target.result;
-				document.body.appendChild(audio);
-				context = new webkitAudioContext();
-				analyser = context.createAnalyser();
-				source = context.createMediaElementSource(audio);
-				source.connect(analyser);
-				analyser.connect(context.destination);
-				setInterval(animate, 15);
-				setInterval(changeColor, 1000);
-			};
-		})(file);
+		reader.onload = function(e) {
+			console.log('Read file');
+			audio.src = e.target.result;
+			document.body.appendChild(audio);
+			context = new webkitAudioContext();
+			analyser = context.createAnalyser();
+			source = context.createMediaElementSource(audio);
+			source.connect(analyser);
+			analyser.connect(context.destination);
+			setInterval(animate, 15);
+			setInterval(changeColor, 1000);
+		};
 	});
 });
