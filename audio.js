@@ -46,7 +46,7 @@ $(document).ready(function() {
 		event.preventDefault();
 		var file = event.dataTransfer.files[0];
 		if (!file.type.match('audio.*')) {
-			continue;
+			return false;
 		}
 		var reader = FileReader();
 		reader.onload = (function(file) {
