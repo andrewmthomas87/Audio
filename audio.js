@@ -5,7 +5,6 @@ var colors = ['#1abc9c', '#16a085', '#2ecc71', '#27ae60', '#3498db', '#2980b9', 
 
 var audio, context, analyser, source;
 audio = new Audio();
-audio.src = 'Why-Am-I-The-One.m4a';
 audio.controls = false;
 audio.loop = true;
 audio.autoplay = true;
@@ -35,12 +34,33 @@ $(document).ready(function() {
 		$('body>div').append('<div></div>');
 	}
 	resize();
-	document.body.appendChild(audio);
-	context = new webkitAudioContext();
-	analyser = context.createAnalyser();
-	source = context.createMediaElementSource(audio);
-	source.connect(analyser);
-	analyser.connect(context.destination);
-	setInterval(animate, 15);
-	setInterval(changeColor, 1000);
+	$('body').on('dragover', function(jQueryEvent) {
+		var event = jQueryEvent.originalEvent;
+		event.stopPropogation();
+		event.preventDefault();
+		event.dataTransfer.dropEffect = 'copy';
+	});
+	$('body').on('drop', function(jQueryEvent) {
+		var event = jQueryEvent.originalEvent;
+		event.stopPropogation();
+		event.preventDefault();
+		var file = event.dataTransfer.files[0];
+		if (!file.type.match('audio.*')) {
+			continue;
+		}
+		var reader = FileReader();
+		reader.onload = (function(file) {
+			return function(event) {
+				audio.src = event.target.result;
+				document.body.appendChild(audio);
+				context = new webkitAudioContext();
+				analyser = context.createAnalyser();
+				source = context.createMediaElementSource(audio);
+				source.connect(analyser);
+				analyser.connect(context.destination);
+				setInterval(animate, 15);
+				setInterval(changeColor, 1000);
+			};
+		})(file);
+	});
 });
