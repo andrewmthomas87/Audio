@@ -34,13 +34,13 @@ $(document).ready(function() {
 		$('body>div').append('<div></div>');
 	}
 	resize();
-	$('body').on('dragover', function(jQueryEvent) {
+	$('span#drop').on('dragover', function(jQueryEvent) {
 		var event = jQueryEvent.originalEvent;
 		event.stopPropogation();
 		event.preventDefault();
 		event.dataTransfer.dropEffect = 'copy';
 	});
-	$('body').on('drop', function(jQueryEvent) {
+	$('span#drop').on('drop', function(jQueryEvent) {
 		var event = jQueryEvent.originalEvent;
 		event.stopPropogation();
 		event.preventDefault();
