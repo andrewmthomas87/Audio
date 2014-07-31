@@ -9,6 +9,8 @@ audio.controls = false;
 audio.loop = true;
 audio.autoplay = true;
 
+var reader = new FileReader();
+
 function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
@@ -48,8 +50,7 @@ $(document).ready(function() {
 		if (!file.type.match('audio.*')) {
 			return false;
 		}
-		var reader = new FileReader();
-		reader.onload = function(e) {
+		reader.onloadend = function() {
 			console.log('Read file');
 			audio.src = e.target.result;
 			document.body.appendChild(audio);
@@ -61,5 +62,6 @@ $(document).ready(function() {
 			setInterval(animate, 15);
 			setInterval(changeColor, 1000);
 		};
+		reader.readAsDataURL(file);
 	});
 });
