@@ -49,7 +49,6 @@ $(document).ready(function() {
 			return false;
 		}
 		var reader = new FileReader();
-		console.log('Reading file');
 		reader.onload = function(e) {
 			console.log('Read file');
 			audio.src = e.target.result;
