@@ -48,7 +48,7 @@ $(document).ready(function() {
 		if (!file.type.match('audio.*')) {
 			return false;
 		}
-		var reader = FileReader();
+		var reader = new FileReader();
 		reader.onload = (function(file) {
 			return function(event) {
 				audio.src = event.target.result;
