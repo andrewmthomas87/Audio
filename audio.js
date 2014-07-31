@@ -52,7 +52,7 @@ $(document).ready(function() {
 		}
 		reader.onloadend = function() {
 			console.log('Read file');
-			audio.src = e.target.result;
+			audio.src = reader.result;
 			document.body.appendChild(audio);
 			context = new webkitAudioContext();
 			analyser = context.createAnalyser();
