@@ -1,4 +1,10 @@
 
+@font-face {
+	font-family: 'Tesla';
+	src: url('Tesla.ttf');
+	font-weight: 700;
+}
+
 html, body {
 	width: 100%;
 	height: 100%;
@@ -22,10 +28,12 @@ span#drop {
 	padding: 0;
 	padding-top: 25%;
 	margin: 0;
-	font-family: sans-serif;
+	font-family: 'Tesla', sans-serif;
 	font-size: 5em;
-	font-weight: 400;
+	font-weight: 700;
 	text-align: center;
+	-webkit-transition: color 1s linear;
+	        transition: color 1s linear;
 }
 
 div div {

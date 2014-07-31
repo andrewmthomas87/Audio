@@ -11,6 +11,8 @@ audio.autoplay = true;
 
 var reader = new FileReader();
 
+var waiting = true;
+
 function animate() {
 	var fbc_array = new Uint8Array(analyser.frequencyBinCount);
 	analyser.getByteFrequencyData(fbc_array);
@@ -21,7 +23,12 @@ function animate() {
 }
 
 function changeColor() {
-	$('div div').css('background-color', colors[Math.floor(Math.random() * colors.length)]);
+	if (waiting) {
+		$('span#drop').css('color', colors[Math.floor(Math.random() * colors.length)]);
+	}
+	else {
+		$('div div').css('background-color', colors[Math.floor(Math.random() * colors.length)]);
+	}
 }
 
 function resize() {
@@ -36,6 +43,7 @@ $(document).ready(function() {
 		$('body>div').append('<div></div>');
 	}
 	resize();
+	setInterval(changeColor, 1000);
 	$('span#drop').on('dragover', function(jQueryEvent) {
 		var event = jQueryEvent.originalEvent;
 		event.stopPropagation();
@@ -60,10 +68,10 @@ $(document).ready(function() {
 			source.connect(analyser);
 			analyser.connect(context.destination);
 			setInterval(animate, 15);
-			setInterval(changeColor, 1000);
 			$('span#drop').fadeOut(500, function() {
 				$(this).remove();
 			});
+			waiting = false;
 		};
 		reader.readAsDataURL(file);
 	});
