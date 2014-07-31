@@ -34,16 +34,14 @@ $(document).ready(function() {
 		$('body>div').append('<div></div>');
 	}
 	resize();
-	$('span#drop').on('dragover', function(jQueryEvent) {
+	$('span#drop').on('dragover', function(event) {
 		console.log('Drag Over');
-		var event = jQueryEvent.originalEvent;
 		event.stopPropogation();
 		event.preventDefault();
 		event.dataTransfer.dropEffect = 'copy';
 	});
-	$('span#drop').on('drop', function(jQueryEvent) {
+	$('span#drop').on('drop', function(event) {
 		console.log('Drop');
-		var event = jQueryEvent.originalEvent;
 		event.stopPropogation();
 		event.preventDefault();
 		var file = event.dataTransfer.files[0];
