@@ -49,10 +49,10 @@ $(document).ready(function() {
 			return false;
 		}
 		var reader = new FileReader();
-		reader.onload = (function(file) {
-			console.log('File read');
-			return function(event) {
-				audio.src = event.target.result;
+		reader.onload = (function(audioFile) {
+			return function(e) {
+				console.log('Read file');
+				audio.src = e.target.result;
 				document.body.appendChild(audio);
 				context = new webkitAudioContext();
 				analyser = context.createAnalyser();
