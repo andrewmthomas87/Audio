@@ -34,17 +34,19 @@ $(document).ready(function() {
 		$('body>div').append('<div></div>');
 	}
 	resize();
-	document.getElementById('drop').addEventListener('dragover', function(event) {
-		event.stopPropogation();
+	$('span#drop').on('dragover', function(jQueryEvent) {
+		var event = jQueryEvent.originalEvent;
+		event.stopPropagation();
 		event.preventDefault();
 		event.dataTransfer.dropEffect = 'copy';
-	}, false);
-	document.getElementById('drop').addEventListener('drop', function(event) {
-		event.stopPropogation();
+	});
+	$('span#drop').on('drop', function(jQueryEvent) {
+		var event = jQueryEvent.originalEvent;
+		event.stopPropagation();
 		event.preventDefault();
 		var file = event.dataTransfer.files[0];
 		if (!file.type.match('audio.*')) {
-			return false;
+			continue;
 		}
 		var reader = FileReader();
 		reader.onload = (function(file) {
@@ -60,5 +62,5 @@ $(document).ready(function() {
 				setInterval(changeColor, 1000);
 			};
 		})(file);
-	}, false);
+	});
 });
