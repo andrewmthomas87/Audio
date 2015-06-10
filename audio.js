@@ -29,7 +29,7 @@ $(document).ready(function() {
 	}
 	resize();
 	document.body.appendChild(audio);
-	context = new webkitAudioContext();
+	context = new AudioContext();
 	analyser = context.createAnalyser();
 	source = context.createMediaElementSource(audio);
 	source.connect(analyser);
