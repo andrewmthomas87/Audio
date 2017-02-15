@@ -62,7 +62,7 @@ $(document).ready(function() {
 			console.log('Read file');
 			audio.src = reader.result;
 			document.body.appendChild(audio);
-			context = new webkitAudioContext();
+			context = new AudioContext();
 			analyser = context.createAnalyser();
 			source = context.createMediaElementSource(audio);
 			source.connect(analyser);
